@@ -24,10 +24,10 @@
                         <img class="radius" src="img/avatar_io.jpg" alt="">
                     <h3>Nome utente</h3>
                     </div>
-                    <div class="grey margin-right size-icon">
-                        <i class="fas fa-sync-alt "></i>
-                    <i class="fas fa-comment-alt "></i>
-                    <i class="fas fa-ellipsis-v"></i>
+                    <div class="grey margin-right size-icon flex">
+                        <i class="fas fa-sync-alt  "></i>
+                    <i class="fas fa-comment-alt margin-left"></i>
+                    <i class="fas fa-ellipsis-v margin-left"></i>
                     </div>
                 </div>
                 <div class="flex blue padding-left height-70 align">
@@ -73,8 +73,12 @@
             <div class="container-right height-100   ">
                 <div class="avatar flex padding-left height-70 white">
                     <div class="flex align ">
-                        <img class="radius" src="img/avatar_io.jpg" alt="">
-                    <h3>Nome utente</h3>
+                        <img class="size-icon" src="img/avatar_5.jpg" alt="">
+                        <div>
+                            <h3>{{contacts[2].name}}</h3>
+                        <h4 class="grey">{{contacts[2].messages[2].date}}</h4>
+                        </div>
+                        
                     </div>
                     <div class="grey margin-right size-icon">
                         <i class="fas fa-search margin-right"></i>
@@ -82,13 +86,22 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                 </div>
+                <div class="message">
+                    <ul class="body-messages">
+                        <li :class="(message.status == 'sent') ? 'send' : '' " v-for="(message, index) in contacts[2].messages" :key="index">
+                            <div> {{message.text}}</div>
+                            <div class="date">{{message.date}}</div>
+                        </li>
+                    </ul>
+
+                </div>
 
 
 
 
                 <footer>
                     <div class="footer flex  padding-left height-70 white align beetwen grey  grey-footer">
-                        <div class="chat-text flex ">
+                        <div class="chat-text flex  ">
                             <i class="far fa-smile size-icon margin-right"></i>
                             <input type="text" placeholder="Scrivi un messaggio">
                             
