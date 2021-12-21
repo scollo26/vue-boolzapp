@@ -44,30 +44,30 @@
                     
                     <div class="search grey">
                         <div class="input">
-                            <i class="fas fa-search"></i>
+                            <i class="fas fa-search margin-right"></i>
                             <input type="text" placeholder="cerca o inizia una nuova chat">
                         </div>
                     </div>
                 </div>
-                <!-- creazione avatar con vue ciclo for -->
+                <!-- creazione conversazioni avatar con vue ciclo for -->
+                <!-- click cambio conversazione -->
+                <!-- if controllo se index = al counter allora visibile variabile booleana -->
                 <div class="overflow height-100 ">
-                    <div id="avatar" class="avatar flex padding-left  margin 
-                " v-for="(contatti,index) in contacts">
-                    <div class="flex align">
-                        <img class="radius" :src="`img/avatar${contatti.avatar}.jpg`" alt="">
-                        <div class="flex-column">
-                            <h3>{{contatti.name}}</h3>
-                            <p class="grey">{{contatti.messages[0].text}}</p>
+                    <div id="avatar" @click="add(index)" class="avatar flex padding-left  margin 
+                        " :class="(index == counter) ? 'visible' : '' " v-for="(contact,index) in contacts"  >
+                        <div class="flex align">
+                            <img class="radius" :src="`img/avatar${contact.avatar}.jpg`" alt="">
+                            <div @click="" class="flex-column">
+                                <h3>{{contact.name}}</h3>
+                                <p class="grey">{{contact.messages[(contact.messages.length - 1)].text}}</p>
+                            </div>
                         </div>
-                        
-                    </div>
-                    <div class="grey flex ">
-                        <div class="flex ">
-                            {{contatti.messages[0].date}}
+                        <div class="grey flex ">
+                            <div class="flex width-140">
+                                <span>{{ contact.messages[(contact.messages.length - 1)].date}}</span>
+                            </div>
                         </div>
-                        <!-- <span>{{contatti.messages[0].date}}</span> -->
                     </div>
-                </div>
                 </div>
                 
 
@@ -76,14 +76,14 @@
             <div class="container-right height-100   ">
                 <div class="avatar flex padding-left height-70 white">
                     <div class="flex align ">
-                        <img class="size-icon" src="img/avatar_5.jpg" alt="">
+                        <img class="radius" :src='`img/avatar${contacts[counter].avatar}.jpg`' alt='`${contacts[counter].name}`'>
                         <div>
-                            <h3>{{contacts[2].name}}</h3>
-                        <h4 class="grey">{{contacts[2].messages[2].date}}</h4>
+                            <h3>{{contacts[counter].name}}</h3>
+                            <h4 class="grey">Ultimo accesso oggi alle {{ contacts[counter].messages[(contacts[counter].messages.length - 1)].date}}</h4>
                         </div>
                         
                     </div>
-                    <div class="grey margin-right size-icon">
+                    <div class=" flex grey margin-right   size-icon">
                         <i class="fas fa-search margin-right"></i>
                         <i class="fa fa-paperclip margin-right"></i>
                         <i class="fas fa-ellipsis-v"></i>
@@ -91,9 +91,11 @@
                 </div>
                 <div class="message overflow ">
                     <ul class="body-messages">
-                        <li :class="(message.status == 'sent') ? 'send' : '' " v-for="(message, index) in contacts[2].messages" :key="index">
+                        <li v-for="(message, index) in contacts[counter].messages" :class="(message.status == 'sent') ? 'send' : '' " >
                             <div> {{message.text}}</div>
-                            <div class="date">{{message.date}}</div>
+                            <!-- <div class="date">{{message.date}}</div> -->
+                            <div class="date">{{ contacts[counter].messages[index].date.substr(11, 5)}}</div>
+                            
                         </li>
                     </ul>
 
@@ -101,17 +103,17 @@
 
 
 
-
+                <!-- footer inserimento testo -->
                 <footer>
                     <div class="footer flex  padding-left height-70 white align beetwen grey  grey-footer">
                         <div class="chat-text flex  ">
                             <i class="far fa-smile size-icon margin-right"></i>
-                            <input type="text" placeholder="Scrivi un messaggio">
-                            
+                            <input type="text" placeholder="Scrivi un messaggio"> 
                         </div>
-                        <i class="fas fa-microphone size-icon margin-right"></i>
-                            
+                        <div>
+                            <i class="fas fa-microphone size-icon margin-right"></i>
                         </div>
+                        
                     </div>
 
                 </footer>
