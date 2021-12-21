@@ -85,7 +85,7 @@
                 },
                 {
                   name: "Luisa",
-                  avatar: "_4",
+                  avatar: "_6",
                   visible: true,
                   messages: [
                     {
@@ -108,7 +108,18 @@
           change: function(index) {
               this.counter = index;
           },
-          
+          searchChat: function () {
+            // cerco il nome / se presente nella lista delle chat
+            this.contacts.forEach((contact) => {
+                if (contact.name.toLowerCase().includes(this.messageNew.toLowerCase())) {
+                    contact.visible = true;
+                } else {
+                    contact.visible = false;
+                }
+
+              })
+          }  
         }
+
     }
 )

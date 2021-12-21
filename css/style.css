@@ -122,7 +122,9 @@ body{
     
 }
 
-
+.beetwen{
+    justify-content: space-between;
+}
 
 
 /* container */
@@ -158,12 +160,8 @@ body{
     width: 100%;
     height: 75px;
     justify-content: space-between;
-    
-    
 
 }
-
-
 
 
 .radius  {
@@ -182,6 +180,9 @@ body{
 
 /* hover-avatar */
 #avatar:hover {
+    background-color: #E9EBEB;
+}
+.active{
     background-color: #E9EBEB;
 }
 
@@ -208,23 +209,6 @@ body{
     height: 20px;
 }
 
-
-
-.footer {
-    
-    bottom: 0;
-    right: 15%;
-    display: flex;
-    flex-wrap: wrap;
-    
-
-}
-
-
-
-.beetwen{
-    justify-content: space-between;
-}
 
 .chat-text {
     height: 75px;
@@ -280,3 +264,13 @@ ul li {
     align-self: flex-end;
 }
 
+
+.footer {
+    
+    bottom: 0;
+    right: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    
+
+}
