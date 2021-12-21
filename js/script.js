@@ -13,6 +13,7 @@
     {
         el: '#app',
         data: {
+          messageNew: '',
             counter: 0,
             contacts: [
                 {
@@ -104,9 +105,10 @@
             
         },
         methods: {
-          add: function(index) {
+          change: function(index) {
               this.counter = index;
-          }
+          },
+          
         }
     }
 )

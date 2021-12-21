@@ -53,7 +53,7 @@
                 <!-- click cambio conversazione -->
                 <!-- if controllo se index = al counter allora visibile variabile booleana -->
                 <div class="overflow height-100 ">
-                    <div id="avatar" @click="add(index)" class="avatar flex padding-left  margin 
+                    <div id="avatar" @click="change(index)" class="avatar flex padding-left  margin 
                         " :class="(index == counter) ? 'visible' : '' " v-for="(contact,index) in contacts"  >
                         <div class="flex align">
                             <img class="radius" :src="`img/avatar${contact.avatar}.jpg`" alt="">
@@ -89,12 +89,15 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                 </div>
+                <!-- inserimento conversazioni -->
                 <div class="message overflow ">
                     <ul class="body-messages">
-                        <li v-for="(message, index) in contacts[counter].messages" :class="(message.status == 'sent') ? 'send' : '' " >
+                        <li v-for="(message, index) in contacts[counter].messages" 
+                        :class="(message.status == 'sent') ? 'send' : '' " >
                             <div> {{message.text}}</div>
-                            <!-- <div class="date">{{message.date}}</div> -->
-                            <div class="date">{{ contacts[counter].messages[index].date.substr(11, 5)}}</div>
+                            <div class="date">{{ contacts[counter].messages[index].date.substr(11, 5)}}
+
+                            </div>
                             
                         </li>
                     </ul>
