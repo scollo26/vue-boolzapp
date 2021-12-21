@@ -61,6 +61,7 @@
     height: 70px;
 }
 
+
 .input-width{
     width: 500px;
     height: 30px;
@@ -117,15 +118,15 @@
 
 /* container */
 .container-main{
-    width: 80%;
-    height: 800px;
+    width: 85%;
+    height: 100vh;
     margin: 0 auto;
 }
 
 
 .container-left{
-    width: 35%;
-    height: calc(100% - 70px);
+    width: 40%;
+    height: 90%;
 }
 
 .container-right{
@@ -136,7 +137,7 @@
 }
 
 .overflow{
-    overflow-x: auto;
+    overflow-y: auto;
 }
 
 
@@ -161,7 +162,7 @@
 
 
 .radius  {
-    width: 15%;
+    width: 10%;
     border-radius: 50%;
 }
 .radius-icon{
@@ -238,7 +239,7 @@
 
 
 .message{
-    height: calc(100% - 140px);
+    height: calc(100% - 145px);
     
 }
 
