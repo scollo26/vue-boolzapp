@@ -122,9 +122,14 @@
           },
           // nuovo array inserito dall'utente più risposta automatica dopo 1 secondo
           newMessage: function(array) {
+            // dayjs per la data
+            dayjs.extend(window.dayjs_plugin_customParseFormat);
+            let data = dayjs().format( "DD/MM/YYYY HH:mm:ss");
+            // controllo se input inserito dall'utente non sia vuota
             if(this.newMsg != ''){
               let obj = {
-                date: new Date().toLocaleString('it'),
+                // date: new Date().toLocaleString('it'),
+                date: data,
                 text: this.newMsg,
                 status: "sent"
               };
@@ -134,7 +139,8 @@
               setTimeout(() => {
 
                 const obj2 = {
-                  date: new Date().toLocaleString('it'),
+                  // date: new Date().toLocaleString('it'),
+                  date: data,
                   text: ' ok',
                   status: "received"
                 };
@@ -147,7 +153,8 @@
             
             
             
-          }
+          },
+          
           
         }
 
