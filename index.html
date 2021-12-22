@@ -7,6 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
+    
     <title>Document</title>
 </head>
 <body class="grey-back" grey-back>
@@ -45,25 +46,30 @@
                     <div class="search grey">
                         <div class="input">
                             <i class="fas fa-search margin-right"></i>
+                            <!-- input search richiama funzione ricerca nome  -->
                             <input v-model="messageNew" @keyup="searchChat"  type="text" placeholder="cerca o inizia una nuova chat">
                         </div>
                     </div>
                 </div>
                 <!-- creazione conversazioni avatar con vue ciclo for -->
                 <!-- click cambio conversazione -->
-                <!-- if controllo se index = al counter allora visibile variabile booleana -->
+                <!-- if controllo se index = al counter aggiungi classe active -->
+                <!-- v-if se contact.visible = true prende il nome scritto dall'input -->
                 <div class="overflow height-100 ">
                     <div id="avatar" @click="change(index)" class="avatar flex padding-left  margin 
                         " :class="(index == counter) ? 'active' : '' " v-for="(contact,index) in contacts" v-if="contact.visible" >
                         <div class="flex align">
                             <img class="radius" :src="`img/avatar${contact.avatar}.jpg`" alt="">
                             <div @click="" class="flex-column">
+                                <!-- nome contatto -->
                                 <h3>{{contact.name}}</h3>
+                                <!-- ultimo messaggio -->
                                 <p class="grey">{{contact.messages[(contact.messages.length - 1)].text}}</p>
                             </div>
                         </div>
                         <div class="grey flex ">
                             <div class="flex width-140">
+                                <!-- data e orario contatto -->
                                 <span>{{ contact.messages[(contact.messages.length - 1)].date}}</span>
                             </div>
                         </div>
@@ -95,10 +101,11 @@
                         <li v-for="(message, index) in contacts[counter].messages" 
                         :class="(message.status == 'sent') ? 'send' : 'received' " >
                             <div> {{message.text}}</div>
-                            <div class="date">{{ contacts[counter].messages[index].date.substr(11, 5)}}
 
-                            </div>
+                            <div class="date">{{ message.date}}</div>
                             
+
+                            <i class=" fas fa-angle-down"></i>      
                         </li>
                     </ul>
 
@@ -111,7 +118,7 @@
                     <div class="footer flex  padding-left height-70 white align beetwen grey  grey-footer">
                         <div class="chat-text flex  ">
                             <i class="far fa-smile size-icon margin-right"></i>
-                            <input type="text" placeholder="Scrivi un messaggio"> 
+                            <input @keyup.enter="newMessage(contacts[counter].messages)" v-model="newMsg"  type="text" placeholder="Scrivi un messaggio"> 
                         </div>
                         <div>
                             <i class="fas fa-microphone size-icon margin-right"></i>

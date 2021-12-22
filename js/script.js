@@ -14,6 +14,7 @@
         el: '#app',
         data: {
           messageNew: '',
+          newMsg:'',
             counter: 0,
             contacts: [
                 {
@@ -108,8 +109,8 @@
           change: function(index) {
               this.counter = index;
           },
+          // cerco il nome / se presente nella lista delle chat
           searchChat: function () {
-            // cerco il nome / se presente nella lista delle chat
             this.contacts.forEach((contact) => {
                 if (contact.name.toLowerCase().includes(this.messageNew.toLowerCase())) {
                     contact.visible = true;
@@ -118,7 +119,36 @@
                 }
 
               })
-          }  
+          },
+          // nuovo array inserito dall'utente più risposta automatica dopo 1 secondo
+          newMessage: function(array) {
+            if(this.newMsg != ''){
+              let obj = {
+                date: new Date().toLocaleString('it'),
+                text: this.newMsg,
+                status: "sent"
+              };
+
+              array.push(obj);
+              this.newMsg=''
+              setTimeout(() => {
+
+                const obj2 = {
+                  date: new Date().toLocaleString('it'),
+                  text: ' ok',
+                  status: "received"
+                };
+
+                array.push(obj2);
+                console.log(obj); 
+
+              },1000)
+            }
+            
+            
+            
+          }
+          
         }
 
     }
