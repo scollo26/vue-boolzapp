@@ -133,7 +133,8 @@
                             <input @keyup.enter="newMessage(contacts[counter].messages)" v-model="newMsg"  type="text" placeholder="Scrivi un messaggio"> 
                         </div>
                         <div>
-                            <i class="fas fa-microphone size-icon margin-right"></i>
+                            <i @click="newMessage(contacts[counter].messages)" v-if="newMsg.trim().length > 0" class="fas send-msg fa-paper-plane size-icon margin-right"></i>
+                            <i v-else class="fas fa-microphone size-icon margin-right"></i>
                         </div>
                         
                     </div>
