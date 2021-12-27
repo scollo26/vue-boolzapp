@@ -181,6 +181,7 @@ body{
 /* hover-avatar */
 #avatar:hover {
     background-color: #E9EBEB;
+    cursor: pointer;
 }
 .active{
     background-color: #E9EBEB;
@@ -210,19 +211,7 @@ body{
 }
 
 
-.chat-text {
-    height: 75px;
-    align-items: center;
-    width: 90%;
-}
 
-
-
-.chat-text input{
-    width: 100%;
-    height: 50px;
-    border: none;
-}
 
 /* chat-colonna destra */
 .message{
@@ -256,13 +245,63 @@ ul li {
     align-self: flex-end;
     margin-top: 10px;
     background-color: chartreuse;
+    
+}
+
+.body-messages .received {
+    margin-top: 10px;
 }
 
 .body-messages .date {
     font-size: 0.8em;
     align-self: flex-end;
+    margin-top: 10px;
 }
 
+/* menu dropdown delete messaggio */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0px;
+    top: 10px;
+}
+
+.dropdown-content li {
+    color: black;
+    border-radius: 0em;
+    min-width: 160px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.dropdown:hover .dropdown-content {
+    background-color: #3e8e41;
+}
+
+
+.dropdown i{
+    text-align: end;
+    position: absolute;
+    right: 0px;
+    top: -2px;
+    
+}
+/* inizio footer */
 
 .footer {
     
@@ -273,6 +312,26 @@ ul li {
     
 
 }
+
+/* input footer inserimento nuovo messaggio */
+.chat-text {
+    height: 75px;
+    align-items: center;
+    width: 90%;
+}
+
+
+
+.chat-text input{
+    width: 100%;
+    height: 50px;
+    border: none;
+}
+
+
+  
+  
+   
 
 
 

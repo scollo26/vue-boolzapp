@@ -108,8 +108,16 @@
 
                             <div class="date">{{ message.date}}</div>
                             
-
-                            <i class=" fas fa-angle-down"></i>      
+                             <!-- menu dropdown delete messaggio  -->
+                            <div class="dropdown">
+                                <i class=" fas fa-angle-down"></i> 
+                                <div class="dropdown-content">    
+                                    <ul>
+                                        <li>Info</li>
+                                        <li @click="deleteMsg(contacts[counter].messages, index)">Elimina messaggio</li>
+                                    </ul>   
+                                </div>
+                            </div> 
                         </li>
                     </ul>
 

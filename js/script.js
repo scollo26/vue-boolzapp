@@ -16,6 +16,15 @@
           messageNew: '',
           newMsg:'',
             counter: 0,
+             //predisporre una lista di frasi random
+             frasiRandom: [
+              'vai a mangiare ',
+              'cosa?',
+              'chiamami ',
+              'non ho fame',
+              'lo faccio subito',
+              'ci vediamo domani'
+          ],
             contacts: [
                 {
                   name: "Michele",
@@ -26,6 +35,7 @@
                       date: "10/01/2020 15:30:55",
                       text: "Hai portato a spasso il cane?",
                       status: "sent",
+                      
                     },
                     {
                       date: "10/01/2020 15:50:00",
@@ -109,6 +119,7 @@
           change: function(index) {
               this.counter = index;
           },
+          
           // cerco il nome / se presente nella lista delle chat
           searchChat: function () {
             this.contacts.forEach((contact) => {
@@ -120,6 +131,7 @@
 
               })
           },
+          
           // nuovo array inserito dall'utente più risposta automatica dopo 1 secondo
           newMessage: function(array) {
             // dayjs per la data
@@ -136,12 +148,23 @@
 
               array.push(obj);
               this.newMsg=''
+              // funzione per numero random
+              function getRandomIntInclusive(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1) + min);
+              }
+              const randFrase = this.frasiRandom[getRandomIntInclusive(0, this.frasiRandom.length - 1)];
+
+
+
+
               setTimeout(() => {
 
                 const obj2 = {
                   // date: new Date().toLocaleString('it'),
                   date: data,
-                  text: ' ok',
+                  text: randFrase,
                   status: "received"
                 };
 
@@ -154,9 +177,13 @@
             
             
           },
+          // Funzione Cancella messaggio: cliccando sulla icona
+          deleteMsg: function (array, index) { 
+                
+            array.splice(index, 1);
+        },  
           
-          
-        }
+      }
 
     }
 )
