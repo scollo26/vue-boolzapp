@@ -68,13 +68,13 @@
                                 <!-- nome contatto -->
                                 <h3>{{contact.name}}</h3>
                                 <!-- ultimo messaggio -->
-                                <p class="grey">{{contact.messages[(contact.messages.length - 1)].text}}</p>
+                                <p v-if="contact.messages[(contact.messages.length - 1)] != null"  class="grey">{{contact.messages[(contact.messages.length - 1)].text}}</p>
                             </div>
                         </div>
                         <div class="grey flex ">
                             <div class="flex width-140">
                                 <!-- data e orario contatto -->
-                                <span>{{ contact.messages[(contact.messages.length - 1)].date}}</span>
+                                <span v-if="contact.messages[(contact.messages.length - 1)] != null" >{{ contact.messages[(contact.messages.length - 1)].date}}</span>
                             </div>
                         </div>
                     </div>
@@ -89,14 +89,34 @@
                         <img class="radius" :src='`img/avatar${contacts[counter].avatar}.jpg`' alt='`${contacts[counter].name}`'>
                         <div>
                             <h3>{{contacts[counter].name}}</h3>
-                            <span class="grey">Ultimo accesso oggi alle {{ contacts[counter].messages[(contacts[counter].messages.length - 1)].date}}</span>
+                            <span v-if="contacts[counter].messages[(contacts[counter].messages.length - 1)] != null" class="grey">Ultimo accesso oggi alle {{ contacts[counter].messages[(contacts[counter].messages.length - 1)].date}}</span>
+                            <!-- v-show quando mando un messaggio rispondono online -->
+                            <span v-show="writeText" class="grey">...sta scrivendo</span>
+                            <br>
+                            <!-- mentre scrive è online -->
+                            <span v-if="Online" class="online">
+                                <i class="far fa-dot-circle"></i>
+                                online
+                            </span>
                         </div>
+                        
                         
                     </div>
                     <div class=" flex grey margin-right   size-icon">
                         <i class="fas fa-search margin-right"></i>
                         <i class="fa fa-paperclip margin-right"></i>
-                        <i class="fas fa-ellipsis-v"></i>
+                        <!-- dropdown cancella tutti i messaggi -->
+                        <div class="dropdown">
+                            <i class="fas fa-ellipsis-v"></i>
+                            <div class="dropdown-content">    
+                                <ul>
+                                    <!-- cancello solo un messaggio -->
+                                    <li @click="deleteMsg(contacts[counter].messages, index)">elimina messaggio</li>
+                                    <!-- funzione cancello tutti i messaggi -->
+                                    <li @click="deleteAllMessages">elimina tutti messaggi</li>
+                                </ul>   
+                            </div>
+                        </div> 
                     </div>
                 </div>
                 <!-- inserimento conversazioni -->
@@ -108,12 +128,13 @@
 
                             <div class="date">{{ message.date}}</div>
                             
-                             <!-- menu dropdown delete messaggio  -->
+                            <!-- menu dropdown delete un solo  messaggio  -->
                             <div class="dropdown">
                                 <i class=" fas fa-angle-down"></i> 
                                 <div class="dropdown-content">    
                                     <ul>
                                         <li>Info</li>
+                                        <!-- cancello solo un messaggio -->
                                         <li @click="deleteMsg(contacts[counter].messages, index)">Elimina messaggio</li>
                                     </ul>   
                                 </div>

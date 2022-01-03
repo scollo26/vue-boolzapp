@@ -16,8 +16,10 @@
           messageNew: '',
           newMsg:'',
             counter: 0,
+            writeText: false,
+            Online: false,
              //predisporre una lista di frasi random
-             frasiRandom: [
+            frasiRandom: [
               'vai a mangiare ',
               'cosa?',
               'chiamami ',
@@ -158,30 +160,43 @@
 
 
 
-
               setTimeout(() => {
+                // variabile booleana per sapere se stanno scrivendo/online
+                this.writeText = true;
+                this.Online = true
+                
+                setTimeout(() => {
 
-                const obj2 = {
-                  // date: new Date().toLocaleString('it'),
-                  date: data,
-                  text: randFrase,
-                  status: "received"
-                };
+                  const obj2 = {
+                    // date: new Date().toLocaleString('it'),
+                    date: data,
+                    text: randFrase,
+                    status: "received"
+                  };
 
-                array.push(obj2);
-                console.log(obj); 
+                  array.push(obj2);
+                  console.log(obj); 
+                  
 
-              },1000)
+                  this.writeText = false
+                  setTimeout(() => {
+                    this.Online = false
+                  }, 2000);
+                }, 3000);
+              }, 1000);
             }
             
             
             
           },
           // Funzione Cancella messaggio: cliccando sulla icona
-          deleteMsg: function (array, index) { 
+          deleteMsg(array, index) { 
                 
             array.splice(index, 1);
         },  
+        deleteAllMessages () {
+          this.contacts[this.counter].messages = [];
+        },
           
       }
 

@@ -94,6 +94,7 @@ body{
 }
 
 /* position */
+
 .relative{
     position: relative;
 }
@@ -217,17 +218,21 @@ input:focus {
 }
 
 
-footer input:focus { 
-    border: 2px solid #8EDAFC;
-    outline: none;
-    /* border-color: #719ECE; */
-    /* box-shadow: 2px 2px  2px #719ECE; */
-}
 
 
 
 
 /* chat-colonna destra */
+
+/* colonna destra top */
+.online {
+    padding-right: 20px;
+    color: green;
+}
+
+.online i {
+    color: green;
+}
 .message{
     height: calc(100% - 145px);
     
@@ -236,6 +241,8 @@ footer input:focus {
 ul li {
     list-style: none;
 }
+
+/* contenuto centrale colonna destra */
 
 .body-messages {
     background-image: url(../img/mine.jpg);
@@ -286,6 +293,7 @@ ul li {
     z-index: 1;
     right: 0px;
     top: 10px;
+    
 }
 
 .dropdown-content li {
@@ -295,6 +303,8 @@ ul li {
     text-decoration: none;
     display: block;
     cursor: pointer;
+    background-color: white;
+    font-size: 0.8em;
 
 }
 
@@ -322,9 +332,14 @@ ul li {
     bottom: 0;
     right: 15%;
     display: flex;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap; 
+}
 
+footer input:focus { 
+    border: 2px solid #8EDAFC;
+    outline: none;
+    /* border-color: #719ECE; */
+    /* box-shadow: 2px 2px  2px #719ECE; */
 }
 
 /* input footer inserimento nuovo messaggio */
@@ -342,10 +357,6 @@ ul li {
     border: none;
 }
 
-
-  
-  
-   
 
 
 
