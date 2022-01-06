@@ -193,10 +193,13 @@
           deleteMsg(array, index) { 
                 
             array.splice(index, 1);
-        },  
-        deleteAllMessages () {
-          this.contacts[this.counter].messages = [];
-        },
+          },  
+          deleteAllMessages () {
+            this.contacts[this.counter].messages = [];
+          },
+          deleteUser: function () {
+            this.contacts.splice(this.counter, 1)
+          },
           
       }
 
