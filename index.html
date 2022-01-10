@@ -74,6 +74,7 @@
                         <div class="grey flex ">
                             <div class="flex width-140">
                                 <!-- data e orario contatto -->
+                                <!-- if per controllo se cancello tutti utenti non è diverso da null  -->
                                 <span v-if="contact.messages[(contact.messages.length - 1)] != null" >{{ contact.messages[(contact.messages.length - 1)].date}}</span>
                             </div>
                         </div>
@@ -89,6 +90,7 @@
                         <img class="radius" :src='`img/avatar${contacts[counter].avatar}.jpg`' alt='`${contacts[counter].name}`'>
                         <div>
                             <h3>{{contacts[counter].name}}</h3>
+                            <!-- if per controllo se cancello tutti i messaggi non è uguale a null -->
                             <span v-if="contacts[counter].messages[(contacts[counter].messages.length - 1)] != null" class="grey">Ultimo accesso oggi alle {{ contacts[counter].messages[(contacts[counter].messages.length - 1)].date}}</span>
                             <!-- v-show quando mando un messaggio rispondono online -->
                             <span v-show="writeText" class="grey">...sta scrivendo</span>
@@ -118,6 +120,7 @@
                                 </ul>   
                             </div>
                         </div> 
+                        
                     </div>
                 </div>
                 <!-- inserimento conversazioni -->

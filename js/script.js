@@ -8,7 +8,6 @@
 // Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all’interno del pannello della conversazione
 // Click sul contatto mostra la conversazione del contatto cliccato
 
-
   const app = new Vue(
     {
         el: '#app',
@@ -117,6 +116,8 @@
             ]
             
         },
+        
+         
         methods: {
           change: function(index) {
               this.counter = index;
@@ -201,7 +202,9 @@
             this.contacts.splice(this.counter, 1)
           },
           
-      }
-
+          
+          
+        },
+       
     }
 )
